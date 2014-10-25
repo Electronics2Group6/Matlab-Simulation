@@ -1,5 +1,8 @@
 global exectime
 
+clear all
+close all
+
 % f1 = input('Enter the ".tif" image file: ');
 % f2 = input('Enter the start frame no.  : ');
 % f3 = input('Enter the end frame no.    : ');
@@ -8,12 +11,12 @@ prompt = {'Image file ".tif""','Enter the start frame no. :',...
     'Enter the end frame no. :','Pruning Level: '};
 dlg_title = 'Input';
 num_lines = 1;
-def = {'car','1','1','1'}
+def = {'car70','0','0','1'}
 answer = inputdlg(prompt,dlg_title,num_lines,def);
-f1 = answer(1);
-f2 = answer(2);
-f3 = answer(3);
-p = answer(4);
+f1 = answer{1};
+f2 = answer{2};
+f3 = answer{3};
+p = answer{4};
 
 % P = input('Enter pruning level (0-14: ');
 if p < 14
@@ -32,7 +35,11 @@ Bitspp = [];
 Frame = [];
 for frameno = f2:1:f3
     frameno = num2str(frameno);
-    Fidopen = cat(2, f1, frameno, '.tif');
+    if f2 == f3
+        fidopen = [f1,'.tif'];
+    else
+        fidopen = cat(2, f1, frameno, '.tif');
+    end
     i = double(imread(fidopen));
     Exectime = 0;
     
