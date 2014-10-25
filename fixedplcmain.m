@@ -11,7 +11,7 @@ prompt = {'Image file ".tif""','Enter the start frame no. :',...
     'Enter the end frame no. :','Pruning Level: '};
 dlg_title = 'Input';
 num_lines = 1;
-def = {'car70','0','0','1'}
+def = {'car7','0','0','1'};
 answer = inputdlg(prompt,dlg_title,num_lines,def);
 f1 = answer{1};
 f2 = answer{2};
@@ -35,13 +35,13 @@ Bitspp = [];
 Frame = [];
 for frameno = f2:1:f3
     frameno = num2str(frameno);
-    if f2 == f3
-        fidopen = [f1,'.tif'];
-    else
+%     if f2 == f3
+%         fidopen = [f1,'.tif'];
+%     else
         fidopen = cat(2, f1, frameno, '.tif');
-    end
+%     end
     i = double(imread(fidopen));
-    Exectime = 0;
+    exectime = 0;
     
     c = [ 0.3536 0.3536 0.3536 0.3536 0.3536 0.3536 0.3536 0.3536 ;
         0.4904 0.4158 0.2778 0.0976 0.0976 0.2778 0.4158 0.4904 ;
@@ -84,9 +84,9 @@ for frameno = f2:1:f3
     i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
     i3 = uint8(i2); figure, imshow(i3), title('RECONSTRUCTED IMAGE')
     [d] = sprintf('%2.4f %2.4f', i4, BPP);
-    psnr(counter) = i4;
-    bitspp(counter) = BPP;
-    frame(counter) = (str2num(frameno));
+    Psnr(counter) = i4;
+    Bitspp(counter) = BPP;
+    Frame(counter) = (str2num(frameno));
     counter = counter + 1;
     e = 'r';
     imwrite(i3, (cat(2, e, f1, frameno, '.tif')));
