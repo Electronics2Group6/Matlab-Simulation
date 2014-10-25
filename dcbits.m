@@ -1,4 +1,5 @@
 function dcb = dcbits(dci2)
+%Determine the value of the dc bits for the total reconstructed image
 [u,v] = size(dci2);
 dci2 = dci2';
 dci5 = reshape(dci2,1,u*v);
@@ -16,7 +17,7 @@ bits = 0;
 for i = 1: (u*v)
     ii = abs(dci4(i));
         if ii < 2;
-            bits = bits+3;
+            bits = bits+3; 
         elseif ii < 4;
             bits = bits+4;
         elseif ii < 8;
