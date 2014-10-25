@@ -1,0 +1,1 @@
+The group met up on 10/25 in order to set up the repository and start coding the matlab simulation for the DCTQ.
