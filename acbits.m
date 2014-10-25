@@ -11,15 +11,20 @@ runlength = 0;
 r = 1;
 RL = [];
 level = [];
+%Use a loop to sift through each element of the deconstructed matrix
 for j=6:-1:-7 % Topmost diagonal is the DC coefficient and hence skip it.
     y3 = diag(y,j); % Select elements of a diagonal.
     L = length(y3);
     k = abs(j);
-    if k == 6 || k == 4 || k == 2 || k == 0;
+    %If K is even and below 8, set b to the length of diagonal elements
+    %This will make the loop sift forwards
+    if k == 6 || k == 4 || k == 2 || k == 0; 
         a = 1;
         b = L;
         c = 1;
     else
+    %If K is odd and below 8, set a to the length of diagonal elements
+    %This will make the loop sift backwards
         a = L;
         b = 1;
         c = -1;
@@ -32,7 +37,7 @@ for j=6:-1:-7 % Topmost diagonal is the DC coefficient and hence skip it.
             RL(r) = runlength;
             r = r + 1;
             runlength = 0;
-        end % Done for this coefficient.
+        end 
     end % Process the next coefficient in diagonal (for ‘h’ loop).
 end % Process the next coefficient in diagonal (for ‘j’ loop).
 %RL
@@ -40,15 +45,15 @@ end % Process the next coefficient in diagonal (for ‘j’ loop).
 % Based on the two arrays ‘RL’ and ‘level’, the number of bits
 % (for encoding AC coefficients) are counted.
 len = length(RL);
-acbit = 0;
+acbit = 0; %Set acbit to 0 so there is no garbage value
 if runlength~=63; % 63 means all AC coefficients are 0.
     for x=1:1:len
         level(x) = abs(level(x));
         k = 0;
-        if RL(x)==0 && level(x)<41
+        if RL(x)==0 && level(x)<41 
             if level(x) < 2 ;
-                acbit = acbit + 3 ;
-            elseif level(x) < 3 ;
+                acbit = acbit + 3; %Increment based on algorithm on pg 434
+            elseif level(x) < 3 ; 
                 acbit = acbit + 5 ;
             elseif level(x) < 4 ;
                 acbit = acbit + 6 ;
