@@ -10,9 +10,9 @@ num_lines = 1;
 def = {'car7','0','0','1'};
 answer = inputdlg(prompt,dlg_title,num_lines,def);
 f1 = answer{1};
-f2 = answer{2};
-f3 = answer{3};
-p = answer{4};
+f2 = str2num(answer{2});
+f3 = str2num(answer{3});
+p = str2num(answer{4});
 
 if p < 14
     if p > 7
@@ -65,16 +65,15 @@ for frameno = f2:1:f3
     BITS = DCB + ACB;
     BPP = BITS/(m*n);
     
+    %we need to scale i2 appropriately
+    i2 = i2 * 255 / max(i2(:));
+    
     i4 = 10*log10(((255^2)*m*n)/(sum(sum((i-i2).^2))));
     
     disp('PSNR value (in dB) is: ')
     disp(i4)
     disp('BITS PER PIXEL: ')
-    disp(BPP)
-    
-    
-    %we need to scale i2 appropriately
-    i2 = i2 * 255 / max(i2(:));
+    disp(BPP) 
     
     i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
     i3 = uint8(i2); figure, imshow(i3), title('RECONSTRUCTED IMAGE')
