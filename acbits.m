@@ -1,4 +1,8 @@
 function acb = acbits(y)
+
+% look at page 343 in the book for this function information
+
+
 % This computes the number of bits in AC coefficients in VLC coding scheme.
 % Two arrays called ‘RL’ (runlength) & ‘level’ (value of coefficients) are
 % calculated.
