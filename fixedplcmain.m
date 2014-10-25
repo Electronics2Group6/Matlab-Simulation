@@ -13,7 +13,7 @@ answer = inputdlg(prompt,dlg_title,num_lines,def);
 f1 = answer(1);
 f2 = answer(2);
 f3 = answer(3);
-P = answer(4);
+p = answer(4);
 
 % P = input('Enter pruning level (0-14: ');
 if p < 14
