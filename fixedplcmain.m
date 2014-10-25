@@ -3,10 +3,6 @@ global exectime
 clear all
 close all
 
-% f1 = input('Enter the ".tif" image file: ');
-% f2 = input('Enter the start frame no.  : ');
-% f3 = input('Enter the end frame no.    : ');
-
 prompt = {'Image file ".tif""','Enter the start frame no. :',...
     'Enter the end frame no. :','Pruning Level: '};
 dlg_title = 'Input';
@@ -18,7 +14,6 @@ f2 = answer{2};
 f3 = answer{3};
 p = answer{4};
 
-% P = input('Enter pruning level (0-14: ');
 if p < 14
     if p > 7
         k = (p-6)*(-1);
@@ -35,11 +30,7 @@ Bitspp = [];
 Frame = [];
 for frameno = f2:1:f3
     frameno = num2str(frameno);
-%     if f2 == f3
-%         fidopen = [f1,'.tif'];
-%     else
-        fidopen = cat(2, f1, frameno, '.tif');
-%     end
+    fidopen = cat(2, f1, frameno, '.tif');
     i = double(imread(fidopen));
     exectime = 0;
     
@@ -82,7 +73,7 @@ for frameno = f2:1:f3
     disp(BPP)
     
     
-%     we need to scale i2 appropriately
+    %we need to scale i2 appropriately
     i2 = i2 * 255 / max(i2(:));
     
     i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
