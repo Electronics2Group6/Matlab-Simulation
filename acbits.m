@@ -188,4 +188,4 @@ if runlength~=63; % 63 means all AC coefficients are 0.
 end % End for runlength~=63 loop.
 acbit = acbit + 2 ; % EOB (end of block) indication bits.
 acb = acbit;
-%disp(acb)
+disp(acb);
