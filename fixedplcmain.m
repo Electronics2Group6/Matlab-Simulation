@@ -81,6 +81,10 @@ for frameno = f2:1:f3
     disp('BITS PER PIXEL: ')
     disp(BPP)
     
+    
+%     we need to scale i2 appropriately
+    i2 = i2 * 255 / max(i2(:));
+    
     i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
     i3 = uint8(i2); figure, imshow(i3), title('RECONSTRUCTED IMAGE')
     [d] = sprintf('%2.4f %2.4f', i4, BPP);
