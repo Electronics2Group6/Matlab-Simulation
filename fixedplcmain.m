@@ -77,7 +77,7 @@ p = str2num(answer{4});
         disp(BPP)
         
         i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
-        i3 = uint8(i2); figure, imshow(i3), title('RECONSTRUCTED IMAGE')
+        i3 = uint8(i2); figure, imshow(i3), title(['RECONSTRUCTED IMAGE: pruning level',num2str(p)])
         [d] = sprintf('%2.4f %2.4f', i4, BPP);
         Psnr(counter) = i4;
         Bitspp(counter) = BPP;
