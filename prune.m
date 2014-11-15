@@ -9,4 +9,4 @@ Y = fliplr(y);
 % end
 
 Y = triu(Y,k);
-y = fliplr(Y)
+y = fliplr(Y);
