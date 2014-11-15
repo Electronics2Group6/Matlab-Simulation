@@ -14,6 +14,8 @@ f2 = str2num(answer{2});
 f3 = str2num(answer{3});
 p = str2num(answer{4});
 
+figure; imshow(imread([f1, '0.tif'])); title('ORIGINAL IMAGE')
+
 % for p = 1:14
     if p < 14
         if p > 7
@@ -76,7 +78,7 @@ p = str2num(answer{4});
         disp('BITS PER PIXEL: ')
         disp(BPP)
         
-        i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
+%         i5 = uint8(i); figure, imshow(i5), title('ORIGINAL IMAGE')
         i3 = uint8(i2); figure, imshow(i3), title(['RECONSTRUCTED IMAGE: pruning level',num2str(p)])
         [d] = sprintf('%2.4f %2.4f', i4, BPP);
         Psnr(counter) = i4;
@@ -85,5 +87,5 @@ p = str2num(answer{4});
         counter = counter + 1;
         e = 'r';
         imwrite(i3, (cat(2, e, f1, frameno, '.tif')));
-    end
-% end
+%     end
+end

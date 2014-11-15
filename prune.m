@@ -8,5 +8,5 @@ Y = fliplr(y);
 %   y = full(y2)
 % end
 
-% Y = triu(Y,k);
-y = fliplr(Y);
+Y = triu(Y,k);
+y = fliplr(Y)
